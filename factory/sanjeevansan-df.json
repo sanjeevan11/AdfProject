@@ -1,0 +1,9 @@
+{
+	"name": "sanjeevansan-df",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4070bc2e-d544-48e0-bb06-a41503918260",
+		"tenantId": "34ddb38c-75c6-4a74-92fb-284f53dccf74"
+	}
+}

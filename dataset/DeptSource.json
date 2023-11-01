@@ -5,6 +5,9 @@
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "SAI SIR CLASS"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

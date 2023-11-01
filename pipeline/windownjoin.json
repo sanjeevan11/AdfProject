@@ -27,6 +27,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "SAI SIR CLASS"
+		},
 		"annotations": []
 	}
 }

@@ -19,13 +19,21 @@
 					"name": "DEPT"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "windowOutput",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "join1"
 				},
 				{
-					"name": "select1"
+					"name": "window1"
 				}
 			],
 			"scriptLines": [
@@ -50,16 +58,13 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
-				"join1 select(mapColumn(",
-				"          EmployeeNO = EmpNo,",
-				"          EmpName,",
-				"          Sal,",
-				"          Deptno = EMPL@Deptno,",
-				"          Deptno = DEPT@Deptno,",
-				"          Deptname = Dname",
-				"     ),",
+				"join1 window(asc(EMPL@Deptno, true)) ~> window1",
+				"window1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:[''],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}

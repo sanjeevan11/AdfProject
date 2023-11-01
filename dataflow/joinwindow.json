@@ -58,7 +58,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
-				"join1 window(asc(EMPL@Deptno, true),",
+				"join1 window(desc(EMPL@Deptno, true),",
 				"     Sal = avg(Sal)) ~> window1",
 				"window1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",

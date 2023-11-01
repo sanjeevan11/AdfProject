@@ -44,7 +44,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> empl1",
-				"EMPL, empl1 union(byName: true)~> union1"
+				"EMPL, empl1 union(byName: true,",
+				"     partitionBy('hash', 1))~> union1"
 			]
 		}
 	}

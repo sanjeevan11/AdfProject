@@ -57,7 +57,7 @@
 				"     broadcast: 'auto')~> lookup1",
 				"lookup1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:[''],",
+				"     partitionFileNames:['lookupsink.txt'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     partitionBy('hash', 1)) ~> LookupSInk"

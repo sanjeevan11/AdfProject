@@ -1,0 +1,67 @@
+{
+	"name": "LOOKUP",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "emplSource",
+						"type": "DatasetReference"
+					},
+					"name": "EMPL"
+				},
+				{
+					"dataset": {
+						"referenceName": "DeptSource",
+						"type": "DatasetReference"
+					},
+					"name": "DEPT"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "OUTPUT",
+						"type": "DatasetReference"
+					},
+					"name": "LookupSInk"
+				}
+			],
+			"transformations": [
+				{
+					"name": "lookup1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          EmpNo as integer,",
+				"          EmpName as string,",
+				"          Sal as integer,",
+				"          Deptno as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> EMPL",
+				"source(output(",
+				"          Deptno as integer,",
+				"          Dname as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> DEPT",
+				"EMPL, DEPT lookup(EMPL@Deptno == DEPT@Deptno,",
+				"     multiple: false,",
+				"     pickup: 'first',",
+				"     asc(DEPT@Deptno, true),",
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:[''],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> LookupSInk"
+			]
+		}
+	}
+}

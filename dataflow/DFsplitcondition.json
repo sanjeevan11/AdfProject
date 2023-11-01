@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "DFsplitcondition",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -10,27 +10,20 @@
 						"type": "DatasetReference"
 					},
 					"name": "EMPL"
-				},
-				{
-					"dataset": {
-						"referenceName": "DeptSource",
-						"type": "DatasetReference"
-					},
-					"name": "DEPT"
 				}
 			],
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "OUTPUT",
+						"referenceName": "splitcondition",
 						"type": "DatasetReference"
 					},
-					"name": "OUTPUT"
+					"name": "splitcondition"
 				}
 			],
 			"transformations": [
 				{
-					"name": "join1"
+					"name": "split1"
 				}
 			],
 			"scriptLines": [
@@ -43,24 +36,15 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> EMPL",
-				"source(output(",
-				"          Deptno as integer,",
-				"          Dname as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
+				"EMPL split(Sal >= 12000,",
+				"     Deptno == 20,",
+				"     disjoint: false) ~> split1@(Salary, dept, default)",
+				"split1@Salary sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> DEPT",
-				"EMPL, DEPT join(EMPL@Deptno == DEPT@Deptno,",
-				"     joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'off')~> join1",
-				"join1 sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     partitionFileNames:['SINK.TXT'],",
+				"     partitionFileNames:['split.txt'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('hash', 1)) ~> OUTPUT"
+				"     partitionBy('hash', 1)) ~> splitcondition"
 			]
 		}
 	}

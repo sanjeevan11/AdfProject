@@ -19,18 +19,13 @@
 					"name": "DEPT"
 				}
 			],
-			"sinks": [
-				{
-					"dataset": {
-						"referenceName": "OUTPUT",
-						"type": "DatasetReference"
-					},
-					"name": "LookupSInk"
-				}
-			],
+			"sinks": [],
 			"transformations": [
 				{
-					"name": "lookup1"
+					"name": "join1"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -50,17 +45,21 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> DEPT",
-				"EMPL, DEPT lookup(EMPL@Deptno == DEPT@Deptno,",
-				"     multiple: false,",
-				"     pickup: 'first',",
-				"     asc(DEPT@Deptno, true),",
-				"     broadcast: 'auto')~> lookup1",
-				"lookup1 sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     partitionFileNames:['lookupsink.txt'],",
+				"EMPL, DEPT join(EMPL@Deptno == DEPT@Deptno,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 select(mapColumn(",
+				"          EmployeeNO = EmpNo,",
+				"          EmpName,",
+				"          Sal,",
+				"          Deptno = EMPL@Deptno,",
+				"          Deptno = DEPT@Deptno,",
+				"          Deptname = Dname",
+				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('hash', 1)) ~> LookupSInk"
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}

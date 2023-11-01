@@ -1,5 +1,5 @@
 {
-	"name": "LOOKUP",
+	"name": "joinwindow",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

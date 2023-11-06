@@ -72,9 +72,21 @@
 						"value": "@equals(activity('Get file  Metadata').output.columnCount,13)",
 						"type": "Expression"
 					},
+					"ifFalseActivities": [
+						{
+							"name": "Fail1",
+							"type": "Fail",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"message": "failed due to no match ",
+								"errorCode": "403"
+							}
+						}
+					],
 					"ifTrueActivities": [
 						{
-							"name": "CD_POPULATION_DATA_copy1",
+							"name": "CD_POPULATION_DATA_in_if",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {

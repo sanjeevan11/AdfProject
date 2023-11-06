@@ -59,6 +59,21 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "check if file exists",
+				"type": "Validation",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_poplation_raw_tz",
+						"type": "DatasetReference"
+					},
+					"timeout": "1.00:00:00",
+					"sleep": 600,
+					"minimumSize": 1024
+				}
 			}
 		],
 		"folder": {

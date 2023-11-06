@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "polulation_ge_tsv",
+				"folderPath": "population",
 				"fileSystem": "raw"
 			},
 			"columnDelimiter": "\t",

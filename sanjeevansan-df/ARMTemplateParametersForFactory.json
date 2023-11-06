@@ -7,6 +7,15 @@
 		},
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
+		},
+		"ls_adls_covidreportingdl_accountKey": {
+			"value": ""
+		},
+		"ls_alblob_covidreposrtingsa_connectionString": {
+			"value": ""
+		},
+		"ls_adls_covidreportingdl_properties_typeProperties_url": {
+			"value": "https://covidereportingdl1.dfs.core.windows.net/"
 		}
 	}
 }

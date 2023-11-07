@@ -144,6 +144,10 @@
 												"SourceBaseUrl": {
 													"value": "@item().SourceBaseUrl",
 													"type": "Expression"
+												},
+												"RelativeUrl": {
+													"value": "@item().SourceRelativeUrl",
+													"type": "Expression"
 												}
 											}
 										}
@@ -578,6 +582,9 @@
 				"parameters": {
 					"SourceBaseUrl": {
 						"type": "string"
+					},
+					"RelativeUrl": {
+						"type": "string"
 					}
 				},
 				"folder": {
@@ -587,7 +594,11 @@
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "HttpServerLocation"
+						"type": "HttpServerLocation",
+						"relativeUrl": {
+							"value": "@dataset().RelativeUrl",
+							"type": "Expression"
+						}
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",

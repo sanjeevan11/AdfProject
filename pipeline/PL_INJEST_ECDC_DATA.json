@@ -174,11 +174,11 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"Relativeurl": {
-											"value": "@pipeline().parameters.SourceRelativeUrl",
+											"value": "@item().Relativeurl",
 											"type": "Expression"
 										},
 										"BaseUrl": {
-											"value": "@pipeline().parameters.Sourcebaseurl",
+											"value": "@item().Sourcebaseurl",
 											"type": "Expression"
 										}
 									}
@@ -190,7 +190,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"Filename": {
-											"value": "@pipeline().parameters.SInkFileName",
+											"value": "@item().SInkFileName",
 											"type": "Expression"
 										}
 									}
@@ -201,17 +201,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"SourceRelativeUrl": {
-				"type": "string"
-			},
-			"SInkFileName": {
-				"type": "string"
-			},
-			"Sourcebaseurl": {
-				"type": "string"
-			}
-		},
 		"folder": {
 			"name": "COVID PROJECT"
 		},

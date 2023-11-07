@@ -14,6 +14,9 @@
 		"parameters": {
 			"SourceBaseUrl": {
 				"type": "string"
+			},
+			"RelaiveUrl": {
+				"type": "string"
 			}
 		},
 		"folder": {
@@ -23,7 +26,11 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "HttpServerLocation"
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().RelaiveUrl",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "COVID PROJECT"
+			"name": "COVID PROJECT/TARGET DS"
 		},
 		"annotations": [],
 		"type": "DelimitedText",

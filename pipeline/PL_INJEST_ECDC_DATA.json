@@ -103,6 +103,10 @@
 										"SourceBaseUrl": {
 											"value": "@item().SourceBaseUrl",
 											"type": "Expression"
+										},
+										"RelativeUrl": {
+											"value": "@item().SourceRelativeUrl",
+											"type": "Expression"
 										}
 									}
 								}

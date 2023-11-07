@@ -38,7 +38,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Lookup ECDC file list ",
+						"activity": "Lookup ECDC file list",
 						"dependencyConditions": [
 							"Succeeded"
 						]

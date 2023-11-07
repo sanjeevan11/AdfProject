@@ -23,9 +23,13 @@
 			"type": "string",
 			"defaultValue": "https://covidereportingdl1.dfs.core.windows.net/"
 		},
+		"ls_http_opendata_ecdc_eu_fixed_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "@{linkedService().SourceBaseUrl}"
+		},
 		"ls_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": " https://raw.githubusercontent.com"
+			"defaultValue": "@{linkedService().Sourcebaseurl}"
 		},
 		"containerUri": {
 			"type": "string",
@@ -65,6 +69,9 @@
 					},
 					"ls_adls_covidreportingdl_properties_typeProperties_url": {
 						"value": "[parameters('ls_adls_covidreportingdl_properties_typeProperties_url')]"
+					},
+					"ls_http_opendata_ecdc_eu_fixed_properties_typeProperties_url": {
+						"value": "[parameters('ls_http_opendata_ecdc_eu_fixed_properties_typeProperties_url')]"
 					},
 					"ls_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
 						"value": "[parameters('ls_http_opendata_ecdc_europa_eu_properties_typeProperties_url')]"

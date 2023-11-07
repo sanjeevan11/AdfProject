@@ -1,5 +1,5 @@
 {
-	"name": "PL_INJEST_CASES_DEATHS_DATA",
+	"name": "PL_INJEST_ECDC_DATA",
 	"properties": {
 		"activities": [
 			{

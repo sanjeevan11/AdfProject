@@ -49,17 +49,39 @@
 				"inputs": [
 					{
 						"referenceName": "DS_CASES_DEATH_RAW_CSV_HTTP",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Relativeurl": {
+								"value": "@variables('SourceRelativeUrl')",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "DS_CASES_DEATH_RAW_DL",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Filename": {
+								"value": "@variables('SInkFileName')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"variables": {
+			"SourceRelativeUrl": {
+				"type": "String",
+				"defaultValue": "covid19/main/ecdc_data/hospital_admissions.csv"
+			},
+			"SInkFileName": {
+				"type": "String",
+				"defaultValue": "hospitalAdmission.csv"
+			}
+		},
 		"folder": {
 			"name": "COVID PROJECT"
 		},

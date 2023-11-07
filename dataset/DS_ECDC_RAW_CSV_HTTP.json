@@ -2,13 +2,10 @@
 	"name": "DS_ECDC_RAW_CSV_HTTP",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_http_opendata_ecdc_eu_fixed",
+			"referenceName": "ls_http_opendata_ecdc_europa_eu",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"SourceBaseUrl": {
-					"value": "@dataset().SourceBaseUrl",
-					"type": "Expression"
-				}
+				"Sourcebaseurl": "https://github.com"
 			}
 		},
 		"parameters": {

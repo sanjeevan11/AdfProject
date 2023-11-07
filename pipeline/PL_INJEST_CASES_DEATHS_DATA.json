@@ -48,7 +48,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_CASES_DEATH_RAW_CSV_HTTP",
+						"referenceName": "DS_ECDC_RAW_CSV_HTTP",
 						"type": "DatasetReference",
 						"parameters": {
 							"Relativeurl": {
@@ -60,7 +60,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_CASES_DEATH_RAW_DL",
+						"referenceName": "DS_ECDC_RAW_DL",
 						"type": "DatasetReference",
 						"parameters": {
 							"Filename": {

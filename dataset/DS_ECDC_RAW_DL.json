@@ -1,5 +1,5 @@
 {
-	"name": "DS_CASES_DEATH_RAW_DL",
+	"name": "DS_ECDC_RAW_DL",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adls_covidreportingdl",

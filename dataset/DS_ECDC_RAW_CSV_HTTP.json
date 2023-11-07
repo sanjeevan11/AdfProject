@@ -3,7 +3,18 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_http_opendata_ecdc_eu_fixed",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"SourceBaseUrl": {
+					"value": "@dataset().SourceBaseUrl",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"SourceBaseUrl": {
+				"type": "string"
+			}
 		},
 		"folder": {
 			"name": "COVID PROJECT/SOURCE DS"

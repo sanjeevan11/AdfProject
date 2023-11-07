@@ -47,7 +47,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Lookup ECDC file list ').output.value",
+						"value": "@activity('Copy CASES AND DEATH_1').output.value",
 						"type": "Expression"
 					},
 					"activities": [
@@ -100,12 +100,8 @@
 									"referenceName": "DS_ECDC_RAW_CSV_HTTP",
 									"type": "DatasetReference",
 									"parameters": {
-										"Relativeurl": {
-											"value": "@item().Relativeurl",
-											"type": "Expression"
-										},
-										"BaseUrl": {
-											"value": "@item().Sourcebaseurl",
+										"SourceBaseUrl": {
+											"value": "@item().SourceBaseUrl",
 											"type": "Expression"
 										}
 									}

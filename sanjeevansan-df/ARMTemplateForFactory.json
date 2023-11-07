@@ -88,7 +88,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"items": {
-								"value": "@activity('Copy CASES AND DEATH_1').output.value",
+								"value": "@activity('Lookup ECDC file list').output.value",
 								"type": "Expression"
 							},
 							"activities": [

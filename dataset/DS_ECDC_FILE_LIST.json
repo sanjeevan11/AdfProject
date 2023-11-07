@@ -1,0 +1,35 @@
+{
+	"name": "DS_ECDC_FILE_LIST",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_alblob_covidreposrtingsa",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "COVID PROJECT/SOURCE DS"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ecdc_file_list.json",
+				"container": "configs"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"sourceBaseURL": {
+					"type": "string"
+				},
+				"sourceRelativeURL": {
+					"type": "string"
+				},
+				"sinkFileName": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

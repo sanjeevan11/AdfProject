@@ -17,6 +17,9 @@
 		"ls_adls_covidreportingdl_properties_typeProperties_url": {
 			"value": "https://covidereportingdl1.dfs.core.windows.net/"
 		},
+		"ls_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
+			"value": " https://raw.githubusercontent.com"
+		},
 		"containerUri": {
 			"value": ""
 		},

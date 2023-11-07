@@ -147,14 +147,7 @@
 						{
 							"name": "Delete source",
 							"type": "Delete",
-							"dependsOn": [
-								{
-									"activity": "CD_POPULATION_DATA_in_if",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 0,

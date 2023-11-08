@@ -5,6 +5,9 @@
 			"referenceName": "ls_adls_covidreportingdl",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "COVID PROJECT/TARGET DS"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

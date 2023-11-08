@@ -10,6 +10,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "CasesAndDeaths"
+				},
+				{
+					"dataset": {
+						"referenceName": "DS_COUNTRY_LOOKUP",
+						"type": "DatasetReference"
+					},
+					"name": "CountryLookup"
 				}
 			],
 			"sinks": [],
@@ -22,6 +29,12 @@
 				},
 				{
 					"name": "pivotCounts"
+				},
+				{
+					"name": "lookupCountry"
+				},
+				{
+					"name": "selectCountry"
 				}
 			],
 			"scriptLines": [
@@ -39,6 +52,16 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> CasesAndDeaths",
+				"source(output(",
+				"          country as string,",
+				"          country_code_2_digit as string,",
+				"          country_code_3_digit as string,",
+				"          continent as string,",
+				"          population as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> CountryLookup",
 				"CasesAndDeaths filter(continent== 'Europe' && not(isNull(country_code))) ~> FilterEuropeOnly",
 				"FilterEuropeOnly select(mapColumn(",
 				"          country,",
@@ -61,7 +84,24 @@
 				"     pivotBy(indicator, ['confirmed_cases', 'deaths']),",
 				"     count = sum(daily_count),",
 				"     columnNaming: '$V_$N',",
-				"     lateral: true) ~> pivotCounts"
+				"     lateral: true) ~> pivotCounts",
+				"pivotCounts, CountryLookup lookup(pivotCounts@country == CountryLookup@country,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupCountry",
+				"lookupCountry select(mapColumn(",
+				"          country = pivotCounts@country,",
+				"          country_code_2_digit,",
+				"          country_code_3_digit,",
+				"          population = pivotCounts@population,",
+				"          cases_count = confirmed_cases_count,",
+				"          deaths_count,",
+				"          reported_date,",
+				"          source,",
+				"          Counrty_special",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectCountry"
 			]
 		}
 	}

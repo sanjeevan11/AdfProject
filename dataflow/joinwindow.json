@@ -5,26 +5,14 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "emplSource",
-						"type": "DatasetReference"
-					},
 					"name": "EMPL"
 				},
 				{
-					"dataset": {
-						"referenceName": "DeptSource",
-						"type": "DatasetReference"
-					},
 					"name": "DEPT"
 				}
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "windowOutput",
-						"type": "DatasetReference"
-					},
 					"name": "sink1"
 				}
 			],
@@ -44,15 +32,13 @@
 				"          Deptno as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> EMPL",
+				"     validateSchema: false) ~> EMPL",
 				"source(output(",
 				"          Deptno as integer,",
 				"          Dname as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> DEPT",
+				"     validateSchema: false) ~> DEPT",
 				"EMPL, DEPT join(EMPL@Deptno == DEPT@Deptno,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",

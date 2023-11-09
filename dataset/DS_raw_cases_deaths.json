@@ -14,7 +14,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "cases_deaths.csv",
-				"folderPath": "ECDC",
+				"folderPath": "ECDC/cases_deaths",
 				"fileSystem": "raw"
 			},
 			"columnDelimiter": ",",

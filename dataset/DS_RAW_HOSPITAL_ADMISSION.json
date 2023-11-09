@@ -1,5 +1,5 @@
 {
-	"name": "DS_HOSPITAL_ADMISSION",
+	"name": "DS_RAW_HOSPITAL_ADMISSION",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adls_covidreportingdl",
@@ -14,7 +14,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "hospital_admissions.csv",
-				"folderPath": "ECDC",
+				"folderPath": "ECDC/hospital_admissions",
 				"fileSystem": "raw"
 			},
 			"columnDelimiter": ",",
